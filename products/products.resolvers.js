@@ -1,9 +1,12 @@
-const { getAllProducts } = require("./products.model");
+const { getAllProducts, getProductsByPrice } = require("./products.model");
 
 module.exports = {
   Query: {
-    products: (parent) => {
+    products: () => {
       return getAllProducts();
+    },
+    productsByPrice: (_parent, args) => {
+      return getProductsByPrice(args.min, args.max);
     },
   },
 };
